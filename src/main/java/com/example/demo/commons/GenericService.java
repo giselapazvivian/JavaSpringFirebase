@@ -3,7 +3,7 @@ package com.example.demo.commons;
 import java.util.List;
 import java.util.Map;
 
-public interface GenericServiceApi<I, O> {
+public interface GenericService<I, O> {
 
     String save(I entity, String id) throws Exception;
 

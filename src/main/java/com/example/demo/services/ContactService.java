@@ -1,19 +1,9 @@
 package com.example.demo.services;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
+import com.example.demo.DTO.ContactDTO;
+import com.example.demo.commons.GenericService;
+import com.example.demo.models.Contact;
 
-public interface ContactService<T, I> {
-
-    T create(T entity);
-
-    T findById(String id) throws IOException, InterruptedException, ExecutionException;
-
-    List<T> findAll() throws Exception;
-
-    T update(I id, T entity);
-
-    void delete(I id);
+public interface ContactService extends GenericService<Contact, ContactDTO> {
 
 }
