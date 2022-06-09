@@ -29,7 +29,7 @@ public class ContactServiceImpl extends GenericServiceImpl<Contact, ContactDTO> 
     }
 
     @Override
-    public List<ContactDTO> getAll() throws Exception {
+    public List<ContactDTO> findAll() throws Exception {
         // TODO Auto-generated method stub
         return null;
     }

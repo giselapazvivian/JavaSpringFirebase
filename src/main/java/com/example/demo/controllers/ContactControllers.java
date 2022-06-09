@@ -24,8 +24,8 @@ public class ContactControllers {
     private ContactService service;
 
     @GetMapping("/all")
-    public List<ContactDTO> getAll() throws Exception {
-        return service.getAll();
+    public List<ContactDTO> findAll() throws Exception {
+        return service.findAll();
     }
 
     @GetMapping("/find/{id}")

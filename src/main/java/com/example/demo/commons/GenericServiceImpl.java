@@ -1,18 +1,18 @@
 package com.example.demo.commons;
 
 import java.lang.reflect.ParameterizedType;
-// import java.util.ArrayList;
-// import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
-// import org.yaml.snakeyaml.introspector.PropertyUtils;
+import org.apache.commons.beanutils.PropertyUtils;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
-// import com.google.cloud.firestore.QueryDocumentSnapshot;
-// import com.google.cloud.firestore.QuerySnapshot;
+import com.google.cloud.firestore.QueryDocumentSnapshot;
+import com.google.cloud.firestore.QuerySnapshot;
 
 public abstract class GenericServiceImpl<I, O> implements GenericService<I, O> {
 
@@ -39,36 +39,36 @@ public abstract class GenericServiceImpl<I, O> implements GenericService<I, O> {
         return reference.getId();
     }
 
+    // @Override
+    // public void delete(String id) throws Exception {
+    // getCollection().document(id).delete().get();
+    // }
+
     @Override
-    public void delete(String id) throws Exception {
-        getCollection().document(id).delete().get();
+    public O get(String id) throws Exception {
+        DocumentReference ref = getCollection().document(id);
+        ApiFuture<DocumentSnapshot> futureDoc = ref.get();
+        DocumentSnapshot document = futureDoc.get();
+        if (document.exists()) {
+            O object = document.toObject(clazz);
+            PropertyUtils.setProperty(object, "id", document.getId());
+            return object;
+        }
+        return null;
     }
 
-    // @Override
-    // public O get(String id) throws Exception {
-    // DocumentReference ref = getCollection().document(id);
-    // ApiFuture<DocumentSnapshot> futureDoc = ref.get();
-    // DocumentSnapshot document = futureDoc.get();
-    // if (document.exists()) {
-    // O object = document.toObject(clazz);
-    // PropertyUtils.setProperty(object, "id", document.getId());
-    // return object;
-    // }
-    // return null;
-    // }
-
-    // @Override
-    // public List<O> getAll() throws Exception {
-    // List<O> result = new ArrayList<O>();
-    // ApiFuture<QuerySnapshot> query = getCollection().get();
-    // List<QueryDocumentSnapshot> documents = query.get().getDocuments();
-    // for (QueryDocumentSnapshot doc : documents) {
-    // O object = doc.toObject(clazz);
-    // PropertyUtils.setProperty(object, "id", doc.getId());
-    // result.add(object);
-    // }
-    // return result;
-    // }
+    @Override
+    public List<O> findAll() throws Exception {
+        List<O> result = new ArrayList<O>();
+        ApiFuture<QuerySnapshot> query = getCollection().get();
+        List<QueryDocumentSnapshot> documents = query.get().getDocuments();
+        for (QueryDocumentSnapshot doc : documents) {
+            O object = doc.toObject(clazz);
+            PropertyUtils.setProperty(object, "id", doc.getId());
+            result.add(object);
+        }
+        return result;
+    }
 
     @Override
     public Map<String, Object> getAsMap(String id) throws Exception {
