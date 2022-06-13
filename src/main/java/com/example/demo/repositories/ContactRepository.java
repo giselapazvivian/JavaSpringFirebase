@@ -1,8 +1,8 @@
-package com.example.demo.repositories;
+// package com.example.demo.repositories;
 
-import org.springframework.stereotype.Repository;
+// import org.springframework.stereotype.Repository;
 
-@Repository
-public class ContactRepository {
+// @Repository
+// public class ContactRepository {
 
-}
+// }

@@ -1,12 +1,12 @@
-package com.example.demo.models;
+// package com.example.demo.models;
 
-import lombok.Data;
+// import lombok.Data;
 
-@Data
-public class Contact {
+// @Data
+// public class Contact {
 
-    private String name;
-    private String email;
-    private String phone;
+// private String name;
+// private String email;
+// private String phone;
 
-}
+// }

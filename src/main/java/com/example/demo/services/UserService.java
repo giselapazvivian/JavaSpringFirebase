@@ -24,17 +24,17 @@ public class UserService {
     @Autowired
     JWTProvider jwtProvider;
 
-    // public User save(UserDTO dto) {
-    // Optional<User> user = userRepository.findByName(dto.getName());
-    // if (user.isPresent())
-    // return null;
-    // String password = passwordEncoder.encode(dto.getPassword());
-    // User user = User
-    // .name(dto.getName())
-    // .password(password)
-    // .build();
-    // return userRepository.save(user);
-    // }
+    public User save(UserDTO dto) {
+        Optional<User> user = userRepository.findByName(dto.getName());
+        if (user.isPresent())
+            return null;
+        String password = passwordEncoder.encode(dto.getPassword());
+        user = user.builder()
+                .name(dto.getName())
+                .password(password)
+                .build();
+        return userRepository.save(user);
+    }
 
     public TokenDTO login(UserDTO dto) {
         Optional<User> user = userRepository.findByName(dto.getName());

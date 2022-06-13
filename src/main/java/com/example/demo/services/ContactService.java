@@ -1,9 +1,9 @@
-package com.example.demo.services;
+// package com.example.demo.services;
 
-import com.example.demo.DTO.ContactDTO;
-import com.example.demo.commons.GenericService;
-import com.example.demo.models.Contact;
+// import com.example.demo.DTO.ContactDTO;
+// import com.example.demo.commons.GenericService;
+// import com.example.demo.models.Contact;
 
-public interface ContactService extends GenericService<Contact, ContactDTO> {
+// public interface ContactService extends GenericService<Contact, ContactDTO> {
 
-}
+// }

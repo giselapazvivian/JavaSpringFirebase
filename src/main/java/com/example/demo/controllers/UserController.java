@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.DTO.TokenDTO;
 import com.example.demo.DTO.UserDTO;
+import com.example.demo.models.User;
 import com.example.demo.services.UserService;
 
 @RestController
@@ -35,11 +36,11 @@ public class UserController {
         return ResponseEntity.ok(tokenDto);
     }
 
-    // @PostMapping("/create")
-    // public ResponseEntity<User> create(@RequestBody UserDTO dto) {
-    // User user = userService.save(dto);
-    // if (user == null)
-    // return ResponseEntity.badRequest().build();
-    // return ResponseEntity.ok(user);
-    // }
+    @PostMapping("/create")
+    public ResponseEntity<User> create(@RequestBody UserDTO dto) {
+        User user = userService.save(dto);
+        if (user == null)
+            return ResponseEntity.badRequest().build();
+        return ResponseEntity.ok(user);
+    }
 }
