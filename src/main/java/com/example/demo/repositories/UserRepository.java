@@ -11,4 +11,6 @@ import com.example.demo.models.User;
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByName(String name);
 
+    User save(Optional<User> user);
+
 }

@@ -29,11 +29,11 @@ public class UserService {
         if (user.isPresent())
             return null;
         String password = passwordEncoder.encode(dto.getPassword());
-        user = user.builder()
+        User newUser = User.builder()
                 .name(dto.getName())
                 .password(password)
                 .build();
-        return userRepository.save(user);
+        return userRepository.save(newUser);
     }
 
     public TokenDTO login(UserDTO dto) {

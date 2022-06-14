@@ -1,13 +1,13 @@
-// package com.example.demo.DTO;
+package com.example.demo.DTO;
 
-// import lombok.Data;
+import lombok.Data;
 
-// @Data
-// public class ContactDTO {
+@Data
+public class ContactDTO {
 
-// private String id;
-// private String name;
-// private String email;
-// private String phone;
+    private String id;
+    private String name;
+    private String email;
+    private String phone;
 
-// }
+}
