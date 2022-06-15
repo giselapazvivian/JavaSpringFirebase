@@ -1,7 +1,5 @@
 package com.example.demo.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,16 +20,16 @@ public class ContactServiceImpl extends GenericServiceImpl<Contact, ContactDTO> 
         return firestore.collection("contact");
     }
 
-    @Override
-    public ContactDTO get(String id) throws Exception {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    // @Override
+    // public ContactDTO get(String id) throws Exception {
+    // // TODO Auto-generated method stub
+    // return null;
+    // }
 
-    @Override
-    public List<ContactDTO> findAll() throws Exception {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    // @Override
+    // public List<ContactDTO> findAll() throws Exception {
+    // // TODO Auto-generated method stub
+    // return null;
+    // }
 
 }

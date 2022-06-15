@@ -1,7 +1,6 @@
 package com.example.demo.config;
 
 import java.io.FileInputStream;
-import java.io.IOException;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,12 +15,11 @@ import com.google.firebase.cloud.FirestoreClient;
 public class FirebaseConfig {
 
     @Bean
-    public Firestore firestore() throws IOException {
+    public Firestore firestore() throws Exception {
         FileInputStream serviceAccount = new FileInputStream("./firebase-key.json");
 
         FirebaseOptions options = FirebaseOptions.builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                // .setDatabaseUrl("https://project-java-8f8e6.firebaseio.com")
                 .build();
 
         FirebaseApp firebaseApp = FirebaseApp.initializeApp(options);
